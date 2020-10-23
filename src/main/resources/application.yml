@@ -1,6 +1,12 @@
+server:
+  port: 8080
+
 spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
   datasource:
     driver-class-name: org.postgresql.Driver
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
