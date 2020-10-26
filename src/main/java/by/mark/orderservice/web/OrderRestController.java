@@ -7,6 +7,7 @@ import by.mark.orderservice.model.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RequestMapping(OrderRestController.PATH)
@@ -24,8 +25,8 @@ public class OrderRestController {
         return orderMapper.toOrderDto(orderService.getOrderById(id));
     }
 
-    @PostMapping("/")
-    public OrderDto createOrder(@RequestBody OrderDto orderDto) {
+    @PostMapping
+    public OrderDto createOrder(@Valid @RequestBody OrderDto orderDto) {
         Order order = orderMapper.toOrder(orderDto);
         Order createdOrder = orderService.createOrder(order);
 

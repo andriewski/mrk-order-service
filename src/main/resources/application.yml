@@ -7,6 +7,9 @@ spring:
       ddl-auto: create-drop
   datasource:
     driver-class-name: org.postgresql.Driver
+    url: "jdbc:postgresql://localhost:5432/pg"
+    username: "admin"
+    password: "test123"
   kafka:
     producer:
       bootstrap-servers: localhost:9092

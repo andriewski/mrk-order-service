@@ -6,3 +6,6 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: user
     password: pass
+
+logging.level:
+  root: debug

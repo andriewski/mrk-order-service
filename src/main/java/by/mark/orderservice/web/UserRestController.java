@@ -19,9 +19,9 @@ public class UserRestController {
     private final UserService userService;
     private final UserMapper userMapper;
 
-    public static final String PATH = "/api/v1/user/";
+    public static final String PATH = "/api/v1/user";
 
-    @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserDto getUserById(@PathVariable UUID id) {
         return userMapper.toUserDto(userService.getUserById(id));
     }
@@ -29,8 +29,7 @@ public class UserRestController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public UserDto createUser(@RequestBody UserDto userDto) {
-        User order = userMapper.toUser(userDto);
-        User createdUser = userService.createUser(order);
+        User createdUser = userService.createUser(userMapper.toUser(userDto));
 
         return userMapper.toUserDto(createdUser);
     }
